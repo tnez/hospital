@@ -10,12 +10,14 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @patient = Patient.new
+    @hospital = Hospital.find params[:hospital_id]
+    @patient = @hospital.patients.new
   end
 
   def create
-    @patient = Patient.new(patient_params)
-    if @patient.save
+    @hospital = Hospital.find params[:hospital_id]
+    success = @hospital.patients.create patient_params
+    if success
       flash[:notice] = 'Patient was created succesfully'
       redirect_to patients_path
     else

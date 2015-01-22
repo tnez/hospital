@@ -12,8 +12,13 @@ class PrescriptionsController < ApplicationController
 
   def create
     @patient = Patient.find params[:patient_id]
-    @prescription = @patient.prescriptions.create prescription_params
-    redirect_to patient_path(@patient)
+    if @patient.prescriptions.create prescription_params
+      flash[:notice] = "Prescription was successfully created"
+      redirect_to patient_path(@patient)
+    else
+      flash[:alert] = 'There was a problem: Prescription could not be saved!'
+      render :new
+    end
   end
 
   def edit
@@ -48,7 +53,8 @@ class PrescriptionsController < ApplicationController
   private
   def prescription_params
     params.require(:prescription).permit(
-                                         :medication
+                                         :medication,
+                                         :patient_id
                                         )
   end
   

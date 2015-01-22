@@ -1,4 +1,4 @@
-<%= form_for @patient do |f| %>
+<%= form_for [@hospital,@patient] do |f| %>
   <!-- possible error messages -->
   <% if @patient.errors.any? %>
     <ul class="error-list">

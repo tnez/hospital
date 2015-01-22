@@ -19,7 +19,7 @@
     </p>
   </li>
   <li>
-    HOSPITAL: <%= link_to @hospital.name, hospital_path(@hospital) %>
+    HOSPITAL: <% if @hospital %><%= link_to @hospital.name, hospital_path(@hospital) %><% end %>
   </li>
   <%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
   <ul class="prescription-list">
