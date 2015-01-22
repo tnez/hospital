@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+  <% if flash[:alert] %>
+    <p id="alert"><%= flash[:alert] %></p>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <p id="notice"><%= flash[:notice] %></p>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>

@@ -1,0 +1,22 @@
+<h2>Patient Information</h2>
+<ul class="patient-information">
+  <li>
+    NAME: <%= @patient.name_last + ', ' + @patient.name_first %>
+  </li>
+  <li>
+    DOB: <%= @patient.date_of_birth %>
+  </li>
+  <li>
+    GENDER: <%= @patient.gender %>
+  </li>
+  <li>
+    BLOOD TYPE: <%= @patient.blood_type %>
+  </li>
+  <li>
+    DESCRIPTION:
+    <p>
+      <%= @patient.description %>
+    </p>
+  </li>
+</ul>
+<%= link_to "back", patients_path %>
