@@ -1,5 +1,9 @@
 class Patient < ActiveRecord::Base
 
+  # define relationships
+  belongs_to :hospital
+  has_many :prescriptions
+
   BLOOD_TYPE_OPTIONS = ['O+','O-','A+','A-',
                         'B+','B-','AB+','AB-']
   GENDER_OPTIONS = ['M','F']
