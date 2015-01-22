@@ -18,5 +18,17 @@
       <%= @patient.description %>
     </p>
   </li>
+  <%= link_to "Add Prescription", new_patient_prescription_path(@patient) %>
+  <ul class="prescription-list">
+    <% @patient.prescriptions.each do |prescription| %>
+      <li class="prescription-item">
+        <%= prescription.medication %> |
+        <%= link_to "View", patient_prescription_path(@patient, prescription) %> |
+        <%= link_to "Edit", edit_patient_prescription_path(@patient, prescription) %> |
+        <%= link_to "Delete", patient_prescription_path(@patient, prescription), method: :delete %>
+      </li>
+    <% end %>
+  </ul>
+  <br/>
 </ul>
 <%= link_to "back", patients_path %>
