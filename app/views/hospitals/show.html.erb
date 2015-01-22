@@ -1,0 +1,12 @@
+<h2><%= @hospital.name %></h2>
+<%= link_to "Back", hospitals_path %> |
+<%= link_to "Edit", edit_hospital_path(@hospital)%> |
+<%= link_to "Delete", hospital_path(@hospital), method: :delete %>
+<h3>Patient List:</h3>
+<ul class="patient-list">
+  <% @patients.each do |patient| %>
+    <li class="patient-item">
+      <%= link_to patient.name_last + ', ' + patient.name_first, hospital_patient_path(@hospital,patient)%>
+    </li>
+  <% end %>
+</ul>

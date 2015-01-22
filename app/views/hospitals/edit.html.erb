@@ -1,0 +1,4 @@
+<h2><%= @hospital.name %></h2>
+<%= link_to "Back", hospitals_path %> |
+<%= link_to "Delete", hospital_path(@hospital), method: :delete %>
+<%= render 'form' %>
