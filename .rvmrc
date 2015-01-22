@@ -1,1 +1,1 @@
-rvm 2.2@tnez-hospital --create
+rvm 2.2@tnez-patient-db --create
