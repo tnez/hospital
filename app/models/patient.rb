@@ -12,7 +12,8 @@ class Patient < ActiveRecord::Base
   validate :date_of_birth_at_least_ten_years_ago
   validates_inclusion_of :gender, in: GENDER_OPTIONS
   validates_inclusion_of :blood_type, in: BLOOD_TYPE_OPTIONS
-
+  validates :hospital_id, presence: true
+  
   def date_of_birth_at_least_ten_years_ago
     ten_years_ago = Date.today << 12*10
     if self.date_of_birth > ten_years_ago

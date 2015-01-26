@@ -10,24 +10,25 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @hospital = Hospital.find params[:hospital_id]
-    @patient = @hospital.patients.new
+    @patient = Patient.new
+    @hospitals = Hospital.all
   end
 
   def create
-    @hospital = Hospital.find params[:hospital_id]
-    success = @hospital.patients.create patient_params
-    if success
+    @patient = Patient.new patient_params
+    if @patient.save
       flash[:notice] = 'Patient was created succesfully'
       redirect_to patients_path
     else
       flash[:alert] = 'There was a problem: Patient was not saved!'
+      @hospitals = Hospital.all
       render :new
     end
   end
 
   def edit
     @patient = Patient.find params[:id]
+    @hospitals = Hospital.all
   end
 
   def update
@@ -37,6 +38,7 @@ class PatientsController < ApplicationController
       redirect_to patients_path
     else
       flash[:alert] = 'There was a problem: Patient could not be updated!'
+      @hospitals = Hospital.all
       render :edit
     end
   end
@@ -59,7 +61,8 @@ class PatientsController < ApplicationController
                                     :date_of_birth,
                                     :description,
                                     :gender,
-                                    :blood_type
+                                    :blood_type,
+                                    :hospital_id
                                    )
     
   end

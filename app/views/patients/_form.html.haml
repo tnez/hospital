@@ -1,4 +1,4 @@
-= form_for [@hospital,@patient] do |f|
+= form_for @patient do |f|
   / possible error messages
   - if @patient.errors.any?
     %ul.error-list
@@ -13,6 +13,9 @@
     = f.label :name_last
     = f.text_field :name_last
   .form-group
+    = f.label :hospital
+    = f.select :hospital_id, @hospitals.collect {|h| [h.name, h.id]}, include_blank: true, selected: @patient.hospital_id
+  .form-group
     = f.label :date_of_birth
     = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
   .form-group
@@ -20,12 +23,11 @@
     = f.text_area :description
   .form-group
     = f.label :gender
-    \:
-    \#{f.radio_button :gender, 'M', checked: @patient.isMale?}
-    \#{f.label :gender, 'Male', value: 'M'}
-    \#{f.radio_button :gender, 'F', checked: @patient.isFemale?}
-    \#{f.label :gender, 'Female', value: 'F'}
+    = f.radio_button :gender, 'M', checked: @patient.gender == 'M'
+    = f.label :gender, 'Male', value: 'M'
+    = f.radio_button :gender, 'F', checked: @patient.gender == 'F'
+    = f.label :gender, 'Female', value: 'F'
   .form-group
     = f.label :blood_type
-    = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.blood_type), include_blank: "-----"
+    = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.blood_type), include_blank: true
   = f.submit

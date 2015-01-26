@@ -12,7 +12,7 @@ class HospitalsController < ApplicationController
     @hospital = Hospital.new hospital_params
     if @hospital.save
       flash[:notice] = 'Hospital was created succesfully'
-      redirect_to patients_path
+      redirect_to hospitals_path
     else
       flash[:alert] = 'There was a problem: Hospital was not saved!'
       render :new

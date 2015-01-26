@@ -4,7 +4,6 @@
   - @hospitals.each do |hospital|
     %li.hospital-item
       = hospital.name
-      |
-      \#{link_to "view", hospital_path(hospital)} |
-      \#{link_to "edit", edit_hospital_path(hospital)} |
-      \#{link_to "delete", hospital_path(hospital), method: :delete}
+      = link_to "view", hospital_path(hospital)
+      = link_to "edit", edit_hospital_path(hospital)
+      = link_to "delete", hospital_path(hospital), method: :delete
