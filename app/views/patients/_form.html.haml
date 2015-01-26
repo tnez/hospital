@@ -1,0 +1,31 @@
+= form_for [@hospital,@patient] do |f|
+  / possible error messages
+  - if @patient.errors.any?
+    %ul.error-list
+      - @patient.errors.full_messages.each do |error_message|
+        %li.error-item
+          = error_message
+  / form
+  .form-group
+    = f.label :name_first
+    = f.text_field :name_first
+  .form-group
+    = f.label :name_last
+    = f.text_field :name_last
+  .form-group
+    = f.label :date_of_birth
+    = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
+  .form-group
+    = f.label :description
+    = f.text_area :description
+  .form-group
+    = f.label :gender
+    \:
+    \#{f.radio_button :gender, 'M', checked: @patient.isMale?}
+    \#{f.label :gender, 'Male', value: 'M'}
+    \#{f.radio_button :gender, 'F', checked: @patient.isFemale?}
+    \#{f.label :gender, 'Female', value: 'F'}
+  .form-group
+    = f.label :blood_type
+    = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.blood_type), include_blank: "-----"
+  = f.submit

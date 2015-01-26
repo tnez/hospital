@@ -1,0 +1,29 @@
+%h2 Patient Information
+%ul.patient-information
+  %li
+    NAME: #{@patient.name_last + ', ' + @patient.name_first}
+  %li
+    DOB: #{@patient.date_of_birth}
+  %li
+    GENDER: #{@patient.gender}
+  %li
+    BLOOD TYPE: #{@patient.blood_type}
+  %li
+    DESCRIPTION:
+    %p
+      = @patient.description
+  %li
+    HOSPITAL:
+    - if @hospital
+      = link_to @hospital.name, hospital_path(@hospital)
+  = link_to "Add Prescription", new_patient_prescription_path(@patient)
+  %ul.prescription-list
+    - @patient.prescriptions.each do |prescription|
+      %li.prescription-item
+        = prescription.medication
+        |
+        \#{link_to "View", patient_prescription_path(@patient, prescription)} |
+        \#{link_to "Edit", edit_patient_prescription_path(@patient, prescription)} |
+        \#{link_to "Delete", patient_prescription_path(@patient, prescription), method: :delete}
+  %br/
+= link_to "back", patients_path

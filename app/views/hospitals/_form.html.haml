@@ -1,0 +1,14 @@
+= form_for @hospital do |f|
+  / possible error messages
+  - if @hospital.errors.any?
+    %ul.error-list
+      - @hospital.errors.full_messages.each do |error_message|
+        %li.error-item
+          = error_message
+  / form
+  .form-group
+    = f.label :name
+    = f.text_field :name
+  .form-group
+    = link_to "Cancel", hospitals_path
+    | #{f.submit}
