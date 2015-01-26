@@ -1,0 +1,11 @@
+%h2 Doctors
+= link_to "Create New Doctor", new_doctor_path
+%ul.doctor-list
+  - @doctors.each do |doctor|
+    %li.doctor-item
+      = doctor.last_name + ', ' + doctor.first_name
+      = link_to "view", doctor_path(doctor)
+      |
+      = link_to "edit", edit_doctor_path(doctor)
+      |
+      = link_to "delete", doctor_path(doctor), method: :delete

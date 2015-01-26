@@ -1,0 +1,6 @@
+%h2= @doctor.last_name + ', ' + @doctor.first_name
+= link_to "back", doctors_path
+|
+= link_to "edit", edit_doctor_path(@doctor)
+|
+= link_to "delete", doctor_path(@doctor), method: :delete
