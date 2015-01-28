@@ -1,8 +1,8 @@
-= form_for @patient do |f|
+= form_for @form do |f|
   / possible error messages
-  - if @patient.errors.any?
+  - if @form.errors.any?
     %ul.error-list
-      - @patient.errors.full_messages.each do |error_message|
+      - @form.errors.full_messages.each do |error_message|
         %li.error-item
           = error_message
   / form
@@ -20,11 +20,11 @@
     = f.text_area :description
   .form-group
     = f.label :gender
-    = f.radio_button :gender, 'M', checked: @patient.gender == 'M'
+    = f.radio_button :gender, 'M', checked: @form.gender == 'M'
     = f.label :gender, 'Male', value: 'M'
-    = f.radio_button :gender, 'F', checked: @patient.gender == 'F'
+    = f.radio_button :gender, 'F', checked: @form.gender == 'F'
     = f.label :gender, 'Female', value: 'F'
   .form-group
     = f.label :blood_type
-    = f.select :blood_type, options_for_select(Patient::BLOOD_TYPE_OPTIONS, f.object.blood_type), include_blank: true
+    = f.select :blood_type, options_for_select(Patient::BLOOD_TYPES, f.object.blood_type), include_blank: true
   = f.submit

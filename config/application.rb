@@ -22,5 +22,7 @@ module PatientDB
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    # Add my forms directory
+    config.autoload_paths += %W(#{config.root}/forms)
   end
 end

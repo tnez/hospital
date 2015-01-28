@@ -9,12 +9,13 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @patient = Patient.new
+    @form = PatientForm.new(Patient.new)
   end
 
   def create
-    @patient = Patient.new patient_params
-    if @patient.save
+    @form = PatientForm.new(Patient.new)
+    if @form.validate(params[:patient])
+      @form.save
       flash[:notice] = 'Patient was created succesfully'
       redirect_to patients_path
     else
@@ -24,12 +25,13 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find params[:id]
+    @form = PatientForm.new(Patient.find(params[:id]))
   end
 
   def update
-    @patient = Patient.find params[:id]
-    if @patient.update(patient_params)
+    @form = PatientForm.new(Patient.find(params[:id]))
+    if @form.validate(params[:patient])
+      @form.save
       flash[:notice] = 'Patient succesfully updated'
       redirect_to patients_path
     else
@@ -49,15 +51,4 @@ class PatientsController < ApplicationController
     end
   end
 
-  private
-  def patient_params
-    params.require(:patient).permit(:name_first,
-                                    :name_last,
-                                    :date_of_birth,
-                                    :description,
-                                    :gender,
-                                    :blood_type,
-                                   )
-  end
-  
 end
