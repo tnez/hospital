@@ -1,9 +1,0 @@
-%h2 Hospitals
-= link_to "Create New Hospital", new_hospital_path
-%ul.hospital-list
-  - @hospitals.each do |hospital|
-    %li.hospital-item
-      = hospital.name
-      = link_to "view", hospital_path(hospital)
-      = link_to "edit", edit_hospital_path(hospital)
-      = link_to "delete", hospital_path(hospital), method: :delete

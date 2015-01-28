@@ -6,13 +6,10 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find params[:id]
-    @hospital = @patient.hospital
   end
 
   def new
     @patient = Patient.new
-    @hospitals = Hospital.all
-    @doctors = Doctor.all
   end
 
   def create
@@ -22,15 +19,12 @@ class PatientsController < ApplicationController
       redirect_to patients_path
     else
       flash[:alert] = 'There was a problem: Patient was not saved!'
-      @hospitals = Hospital.all
       render :new
     end
   end
 
   def edit
     @patient = Patient.find params[:id]
-    @hospitals = Hospital.all
-    @doctors = Doctor.all
   end
 
   def update
@@ -40,7 +34,6 @@ class PatientsController < ApplicationController
       redirect_to patients_path
     else
       flash[:alert] = 'There was a problem: Patient could not be updated!'
-      @hospitals = Hospital.all
       render :edit
     end
   end
@@ -64,9 +57,7 @@ class PatientsController < ApplicationController
                                     :description,
                                     :gender,
                                     :blood_type,
-                                    :hospital_id
                                    )
-    
   end
   
 end

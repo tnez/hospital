@@ -13,12 +13,6 @@
     = f.label :name_last
     = f.text_field :name_last
   .form-group
-    = f.label :hospital
-    = f.select :hospital_id, @hospitals.collect {|h| [h.name, h.id]}, include_blank: true, selected: @patient.hospital_id
-  .form-group
-    = f.label :doctor
-    = f.select :doctor_id, @doctors.collect {|d| [d.last_name + ', ' + d.first_name, d.id]}, include_blank: true, selected: doctor_id
-  .form-group
     = f.label :date_of_birth
     = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
   .form-group

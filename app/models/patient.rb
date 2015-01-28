@@ -1,10 +1,5 @@
 class Patient < ActiveRecord::Base
 
-  # define relationships
-  belongs_to :hospital
-  has_many :prescriptions
-  has_one :doctor, as: :commentable
-
   BLOOD_TYPE_OPTIONS = ['O+','O-','A+','A-',
                         'B+','B-','AB+','AB-']
   GENDER_OPTIONS = ['M','F']
@@ -13,7 +8,6 @@ class Patient < ActiveRecord::Base
   validate :date_of_birth_at_least_ten_years_ago
   validates_inclusion_of :gender, in: GENDER_OPTIONS
   validates_inclusion_of :blood_type, in: BLOOD_TYPE_OPTIONS
-  validates :hospital_id, presence: true
   
   def date_of_birth_at_least_ten_years_ago
     ten_years_ago = Date.today << 12*10
