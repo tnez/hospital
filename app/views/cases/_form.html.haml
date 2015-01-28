@@ -1,0 +1,18 @@
+= form_for @form do |f|
+  / possible error messages
+  - if @form.errors.any?
+    %ul.error-list
+      - @form.errors.full_messages.each do |error_message|
+        %li.error-item
+          = error_message
+  /form
+  .form-group
+    = f.label :description
+    = f.text_field :description
+  .form-group
+    = f.label :patient
+    = f.collection_select :patient_id, Patient.all, :id, :name_last, prompt: true
+    |
+    = link_to "Create New Patient", new_patient_path
+  .form-group
+    = f.submit

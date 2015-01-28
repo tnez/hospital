@@ -1,0 +1,11 @@
+%h2 Case List
+%ul
+  - @cases.each do |_case|
+    %li
+      = _case.description
+      |
+      = link_to "view", case_path(_case)
+      |
+      = link_to "edit", edit_case_path(_case)
+      |
+      = link_to "delete", case_path(_case), method: :delete

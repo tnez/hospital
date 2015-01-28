@@ -1,0 +1,17 @@
+%h2
+  = "Case#: #{@case.id}"
+
+%h3 Description
+%p
+  = @case.description
+
+%h3 Patient Info
+.patient-info
+  - if @patient
+    = "#{@patient.name_last}, #{@patient.name_first}"
+
+%h3 Symptoms
+%ul.symptoms
+  - @symptoms.each do |symptom|
+    %li
+      = symptom.description
