@@ -24,6 +24,7 @@ class CasesController < ApplicationController
       redirect_to cases_path
     else
       flash[:alert] = 'There was a problem: Case was not saved!'
+      @all_symptoms = Symptom.all
       render :new
     end
   end
@@ -53,6 +54,7 @@ class CasesController < ApplicationController
       redirect_to cases_path
     else
       flash[:alert] = 'There was a problem: Case could not be updated!'
+      @all_symptoms = Symptom.all
       render :edit
     end
   end
@@ -67,5 +69,5 @@ class CasesController < ApplicationController
       redirect_to cases_path
     end
   end
-  
+
 end

@@ -15,4 +15,9 @@
     |
     = link_to "Create New Patient", new_patient_path
   .form-group
+    = f.collection_check_boxes :symptom_ids, Symptom.all, :id, :description do |b|
+      .form-group
+        = b.check_box
+        = b.label
+  .form-group
     = f.submit
