@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128025257) do
+ActiveRecord::Schema.define(version: 20150128031908) do
 
   create_table "case_symptoms", force: :cascade do |t|
     t.integer "case_id"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20150128025257) do
   end
 
   add_index "cases", ["patient_id"], name: "index_cases_on_patient_id"
+
+  create_table "notes", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "noteable_id"
+    t.string   "noteable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "patients", force: :cascade do |t|
     t.string   "name_first"
