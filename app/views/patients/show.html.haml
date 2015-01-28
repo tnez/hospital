@@ -9,10 +9,6 @@
   %li
     BLOOD TYPE: #{@patient.blood_type}
   %li
-    DESCRIPTION:
-    %p
-      = @patient.description
-  %li
     HOSPITAL:
     - if @hospital
       = link_to @hospital.name, hospital_path(@hospital)

@@ -16,9 +16,6 @@
     = f.label :date_of_birth
     = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
   .form-group
-    = f.label :description
-    = f.text_area :description
-  .form-group
     = f.label :gender
     = f.radio_button :gender, 'M', checked: @form.gender == 'M'
     = f.label :gender, 'Male', value: 'M'

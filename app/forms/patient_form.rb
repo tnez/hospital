@@ -4,7 +4,6 @@ class PatientForm < Reform::Form
   property :date_of_birth
   property :gender
   property :blood_type
-  property :description
 
   validates :name_first, :name_last, presence: true
   validate :meets_age_requirement?
