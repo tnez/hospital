@@ -25,7 +25,12 @@ Rails.application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-  resources :cases
+  resources :cases do
+    member do
+      post :create_note
+    end
+  end
+  
   resources :patients
 
   # Example resource route with sub-resources:

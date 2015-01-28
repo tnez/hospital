@@ -15,3 +15,23 @@
   - @symptoms.each do |symptom|
     %li
       = symptom.description
+
+%h3 Notes
+= form_for @new_note_form, url: create_note_case_path(@case) do |f|
+  / possible error messages
+  - if @new_note_form.errors.any?
+    %ul.error-list
+      - @new_note_form.errors.full_messages.each do |error_message|
+        %li.error-item
+          = error_message
+  /form
+  .form-group
+    = f.label :content
+    = f.text_area :content
+  .form-group
+    = f.submit
+
+%ul.notes-list
+  - @notes.each do |note|
+    %li.note-item
+      = note.content

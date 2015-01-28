@@ -8,6 +8,8 @@ class CasesController < ApplicationController
     @case = Case.find params[:id]
     @patient = @case.patient
     @symptoms = @case.symptoms
+    @notes = @case.notes
+    @new_note_form = NoteForm.new(@case.notes.new)
   end
 
   def new
@@ -23,6 +25,19 @@ class CasesController < ApplicationController
     else
       flash[:alert] = 'There was a problem: Case was not saved!'
       render :new
+    end
+  end
+
+  def create_note
+    @case = Case.find(params[:id])
+    @form = NoteForm.new(@case.notes.new)
+    if @form.validate(params[:note])
+      @form.save
+      flash[:notice] = 'Note was created successfully'
+      redirect_to case_path(@case)
+    else
+      flash[:alert] = 'There was a problem: Note was not saved!'
+      render :new_note
     end
   end
 
