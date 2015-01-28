@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 20150128031908) do
 
   create_table "case_symptoms", force: :cascade do |t|
     t.integer "case_id"
-    t.integer "symptoms_id"
+    t.integer "symptom_id"
   end
 
   add_index "case_symptoms", ["case_id"], name: "index_case_symptoms_on_case_id"
-  add_index "case_symptoms", ["symptoms_id"], name: "index_case_symptoms_on_symptoms_id"
+  add_index "case_symptoms", ["symptom_id"], name: "index_case_symptoms_on_symptom_id"
 
   create_table "cases", force: :cascade do |t|
     t.text     "description"
