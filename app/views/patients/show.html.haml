@@ -1,3 +1,5 @@
+= link_to "back", patients_path
+
 %h2 Patient Information
 %ul.patient-information
   %li
@@ -12,4 +14,23 @@
     HOSPITAL:
     - if @hospital
       = link_to @hospital.name, hospital_path(@hospital)
-= link_to "back", patients_path
+
+%h3 Notes
+= form_for @new_note_form, url: create_note_patient_path(@patient) do |f|
+  / possible error messages
+  - if @new_note_form.errors.any?
+    %ul.error-list
+      - @new_note_form.errors.full_messages.each do |error_message|
+        %li.error-item
+          = error_message
+  /form
+  .form-group
+    = f.label :content
+    = f.text_area :content
+  .form-group
+    = f.submit
+
+%ul.notes-list
+  - @notes.each do |note|
+    %li.note-item
+      = note.content

@@ -10,10 +10,13 @@
    able to review cases, as well as do things like view cases related
    by symptoms and other characteristics.
 
+   - cases have many symptoms through a join table
+   - notes have been created and can be associated with either a
+     patient or a case through a polymorphic assocation (:notable)
    - names and addresses have a polymorphic relationship with
      patients, with the idea that other entities (doctors,
      administrators) may also have names and addresses in the future
-   - cases have many symptoms through a join table
+
 
 ** TodoList
 

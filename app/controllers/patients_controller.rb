@@ -6,6 +6,8 @@ class PatientsController < ApplicationController
 
   def show
     @patient = Patient.find params[:id]
+    @notes = @patient.notes
+    @new_note_form = NoteForm.new(@patient.notes.new)
   end
 
   def new
@@ -27,6 +29,19 @@ class PatientsController < ApplicationController
     else
       flash[:alert] = 'There was a problem: Patient was not saved!'
       render :new
+    end
+  end
+
+  def create_note
+    @patient = Patient.find(params[:id])
+    @form = NoteForm.new(@patient.notes.new)
+    if @form.validate(params[:note])
+      @form.save
+      flash[:notice] = 'Note was created successfully'
+      redirect_to patient_path(@patient)
+    else
+      flash[:alert] = 'There was a problem: Note was not saved!'
+      render :new_note
     end
   end
 

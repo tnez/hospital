@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :patients
+  resources :patients do
+    member do
+      post :create_note
+    end
+  end
 
   # Example resource route with sub-resources:
   #   resources :products do
