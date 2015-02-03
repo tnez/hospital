@@ -3,6 +3,6 @@
 ** Work to be done
 
    - [ ] describe the project in the readme
-   - [ ] refactor forms for addressable and nameable as partials
+   - [X] refactor forms for addressable and nameable
    - [ ] create a case entry form
    - [ ] a case has states

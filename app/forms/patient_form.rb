@@ -1,11 +1,16 @@
 class PatientForm < Reform::Form
-  property :name_first
-  property :name_last
+
+  include NameForm
+  # property :title, validates: {inclusion: Name::TITLES}
+  # property :first_name, validates: {presence: true}
+  # property :middle_name
+  # property :last_name, validates: {presence: true}
+  # property :suffix
+
   property :date_of_birth
   property :gender
   property :blood_type
 
-  validates :name_first, :name_last, presence: true
   validate :meets_age_requirement?
   validates :gender, inclusion: {in: Patient::GENDERS}
   validates :blood_type, inclusion: {in: Patient::BLOOD_TYPES}
@@ -16,5 +21,4 @@ class PatientForm < Reform::Form
     end
   end
 
-  
 end

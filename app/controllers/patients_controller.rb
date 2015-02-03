@@ -9,11 +9,17 @@ class PatientsController < ApplicationController
   end
 
   def new
-    @form = PatientForm.new(Patient.new)
+    new_patient = Patient.new()
+    new_patient.name = Name.new()
+    new_patient.address = Address.new()
+    @form = PatientForm.new(new_patient)
   end
 
   def create
-    @form = PatientForm.new(Patient.new)
+    new_patient = Patient.new()
+    new_patient.name = Name.new()
+    new_patient.address = Address.new()
+    @form = PatientForm.new(new_patient)
     if @form.validate(params[:patient])
       @form.save
       flash[:notice] = 'Patient was created succesfully'

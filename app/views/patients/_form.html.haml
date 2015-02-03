@@ -5,13 +5,22 @@
       - @form.errors.full_messages.each do |error_message|
         %li.error-item
           = error_message
-  / form
-  .form-group
-    = f.label :name_first
-    = f.text_field :name_first
-  .form-group
-    = f.label :name_last
-    = f.text_field :name_last
+  = f.fields_for :name do |n|
+    .form-group
+      = n.label :title
+      = n.select :title, options_for_select(Name::TITLES, n.object.title), include_blank: true
+    .form-group
+      = n.label :first_name
+      = n.text_field :first_name
+    .form-group
+      = n.label :middle_name
+      = n.text_field :middle_name
+    .form-group
+      = n.label :last_name
+      = n.text_field :last_name
+    .form-group
+      = n.label :suffix
+      = n.text_field :suffix
   .form-group
     = f.label :date_of_birth
     = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
