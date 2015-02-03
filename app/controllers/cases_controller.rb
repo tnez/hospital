@@ -70,4 +70,22 @@ class CasesController < ApplicationController
     end
   end
 
+  def approve_case
+    @case = Case.find(params[:id])
+    @case.approve!
+    redirect_to cases_path
+  end
+
+  def assign_case
+    @case = Case.find(params[:id])
+    @case.assign!
+    redirect_to cases_path
+  end
+
+  def close_case
+    @case = Case.find(params[:id])
+    @case.close!
+    redirect_to cases_path
+  end
+
 end

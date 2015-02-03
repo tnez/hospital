@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203012739) do
+ActiveRecord::Schema.define(version: 20150203202442) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street1"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(version: 20150203012739) do
   create_table "cases", force: :cascade do |t|
     t.text     "description"
     t.integer  "patient_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "workflow_state"
   end
 
   add_index "cases", ["patient_id"], name: "index_cases_on_patient_id"

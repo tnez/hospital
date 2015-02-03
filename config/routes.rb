@@ -28,6 +28,9 @@ Rails.application.routes.draw do
   resources :cases do
     member do
       post :create_note
+      patch :approve_case
+      patch :assign_case
+      patch :close_case
     end
   end
   

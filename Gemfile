@@ -38,6 +38,9 @@ gem 'haml-rails'
 # Use reform to make dealing with nested forms way easier!!!
 gem 'reform'
 
+# User workflow to handle case states
+gem 'workflow'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
