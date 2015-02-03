@@ -11,9 +11,7 @@
     = f.text_field :description
   .form-group
     = f.label :patient
-    = f.collection_select :patient_id, Patient.all, :id, :name_last, prompt: true
-    |
-    = link_to "Create New Patient", new_patient_path
+    = f.collection_select :patient_id, Patient.all, :id, :name, prompt: true
   .form-group
     = f.collection_check_boxes :symptom_ids, Symptom.all, :id, :description do |b|
       .form-group

@@ -4,5 +4,5 @@
 
    - [ ] describe the project in the readme
    - [X] refactor forms for addressable and nameable
-   - [ ] create a case entry form
+   - [X] create a case entry form
    - [ ] a case has states
