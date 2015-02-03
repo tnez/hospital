@@ -2,7 +2,7 @@
 %ul.patient-list
   - @patients.each do |patient|
     %li.patient-item
-      = patient.name_last + ', ' + patient.name_first
+      = patient.name
       = link_to "view", patient_path(patient)
       |
       = link_to "edit", edit_patient_path(patient)

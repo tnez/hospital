@@ -50,5 +50,8 @@ group :development, :test do
 
   # convert existing html to haml
   gem 'html2haml'
+
+  # generate dummy data with Faker
+  gem 'faker'
   
 end

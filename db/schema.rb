@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128031908) do
+ActiveRecord::Schema.define(version: 20150203012739) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+  end
+
+  add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
 
   create_table "case_symptoms", force: :cascade do |t|
     t.integer "case_id"
@@ -30,6 +45,20 @@ ActiveRecord::Schema.define(version: 20150128031908) do
 
   add_index "cases", ["patient_id"], name: "index_cases_on_patient_id"
 
+  create_table "names", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "suffix"
+    t.string   "title"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "nameable_id"
+    t.string   "nameable_type"
+  end
+
+  add_index "names", ["nameable_type", "nameable_id"], name: "index_names_on_nameable_type_and_nameable_id"
+
   create_table "notes", force: :cascade do |t|
     t.text     "content"
     t.integer  "noteable_id"
@@ -39,8 +68,6 @@ ActiveRecord::Schema.define(version: 20150128031908) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string   "name_first"
-    t.string   "name_last"
     t.date     "date_of_birth"
     t.string   "gender"
     t.string   "blood_type"
