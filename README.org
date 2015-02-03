@@ -1,0 +1,8 @@
+* PatientDB
+
+** Work to be done
+
+   - [ ] describe the project in the readme
+   - [ ] refactor forms for addressable and nameable as partials
+   - [ ] create a case entry form
+   - [ ] a case has states
