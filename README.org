@@ -1,8 +1,23 @@
 * PatientDB
 
-** Work to be done
+  Collection of medical cases, catalogued by symptoms.
 
-   - [ ] describe the project in the readme
+** Version 3.0
+
+   After a bit of re-tooling I've decided to change the focus of the
+   application from a patient database, to a case database. The idea
+   being that future development will allow doctors and patients to be
+   able to review cases, as well as do things like view cases related
+   by symptoms and other characteristics.
+
+   - names and addresses have a polymorphic relationship with
+     patients, with the idea that other entities (doctors,
+     administrators) may also have names and addresses in the future
+   - cases have many symptoms through a join table
+
+** TodoList
+
+   - [X] describe the project in the readme
    - [X] refactor forms for addressable and nameable
    - [X] create a case entry form
    - [ ] a case has states
