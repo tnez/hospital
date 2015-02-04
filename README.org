@@ -6,7 +6,8 @@
 
    *Form Validation:* if a required field is left blank in the user or
    case forms, it is highlighted red and an informative alert is
-   displayed to the user.
+   displayed to the user. The submit button is initially hidden, but
+   fades-in when the form becomes valid.
 
 ** Version 5.0
 
