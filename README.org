@@ -4,6 +4,8 @@
 
 ** Version 4.0
 
+   [[https://github.com/tnez/hospital/tree/v4.0][v4.0]]
+
    A case can be the following states:
 
    - new: the case is entered into the system
@@ -19,6 +21,8 @@
    doctor. The doctor can then close the case after propper treatment.
 
 ** Version 3.0
+
+   [[https://github.com/tnez/hospital/tree/v3.0][v3.0]]
 
    After a bit of re-tooling I've decided to change the focus of the
    application from a patient database, to a case database. The idea
