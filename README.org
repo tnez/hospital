@@ -2,6 +2,26 @@
 
   Collection of medical cases, catalogued by symptoms.
 
+** Version 5.0
+
+   [[https://github.com/tnez/hospital/tree/v5.0][v5.0]]
+
+   Both patients and cases are now searchable through their respective
+   index pages. This was accomplished using [[http://https://github.com/sunspot/sunspot][solr+sunspot]]. Searching
+   patients peforms a fulltext search on the following fields:
+
+   - first_name
+   - middle_name
+   - last_name
+   - content of any associated notes
+
+   Searching cases performs a fulltext search on the following fields:
+
+   - description
+   - content of any associated notes
+   - fullname of associated patient
+   - description of any associated symptoms
+
 ** Version 4.0
 
    [[https://github.com/tnez/hospital/tree/v4.0][v4.0]]
