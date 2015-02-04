@@ -20,4 +20,16 @@ class Patient < ActiveRecord::Base
   BLOOD_TYPES = %w(O+ O- B+ B- A+ A- AB+ AB-)
   GENDERS = %w(M F)
 
+  searchable do
+    text :first_name,
+      :middle_name,
+      :last_name
+    text :notes do
+      notes.map { |note| note.content }
+    end
+  end
+
+  def full_name
+    [title,first_name,middle_name,last_name,suffix].join(' ').strip
+  end
 end

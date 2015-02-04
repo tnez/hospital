@@ -65,6 +65,38 @@ namespace :db do
     end
   end
 
+  task :generate_case_notes => :environment do
+    puts 'Generating Case Notes'
+    1000.times do
+      # create a new note
+      random_time = rand(5.years).seconds.ago      
+      new_note = Note.new(
+        content: Faker::Lorem.paragraph,
+        created_at: random_time,
+        updated_at: random_time
+      )
+      # and associate it with a random case
+      random_case = Case.find(rand(Case.count) +1)
+      random_case.notes.push(new_note)
+    end
+  end
+
+  task :generate_patient_notes => :environment do
+    puts 'Generating Patient Notes'
+    100.times do
+      # create a new note
+      random_time = rand(5.years).seconds.ago      
+      new_note = Note.new(
+        content: Faker::Lorem.paragraph,
+        created_at: random_time,
+        updated_at: random_time
+      )
+      # and associate it with a random case
+      random_patient = Patient.find(rand(Patient.count) +1)
+      random_patient.notes.push(new_note)
+    end
+  end
+
   task :initialize => :environment do
     Rake::Task["db:drop"].execute
     Rake::Task["db:create"].execute
@@ -72,6 +104,8 @@ namespace :db do
     Rake::Task["db:populate_patients"].execute
     Rake::Task["db:define_symptoms"].execute
     Rake::Task["db:generate_cases"].execute
+    Rake::Task["db:generate_case_notes"].execute
+    Rake::Task["db:generate_patient_notes"].execute
   end
 
 end

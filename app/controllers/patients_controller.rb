@@ -1,7 +1,11 @@
 class PatientsController < ApplicationController
 
   def index
-    @patients = Patient.all
+    if params[:q]
+      @patients = (Patient.search { fulltext params[:q] }).results
+    else
+      @patients = Patient.all
+    end
   end
 
   def show

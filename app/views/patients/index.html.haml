@@ -1,3 +1,10 @@
+= form_tag patients_path, method: :get, class: "navbar-form", role: "search" do
+  .input-group
+    = text_field_tag 'q', params[:q], class: "form-control", id: "srch-term", placeholder: "Search"
+    .input-group-btn
+      %button.btn.btn-default{:style => "width:40px;"}
+        -# %i.glyphicon.glyphicon-search
+
 %h2 Patient List
 %ul.patient-list
   - @patients.each do |patient|

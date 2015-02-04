@@ -18,4 +18,17 @@ class Case < ActiveRecord::Base
     end
     state :closed
   end
+
+  searchable do
+    text :description
+    text :notes do
+      notes.map { |note| note.content }
+    end
+    text :patient do
+      patient.full_name
+    end
+    text :symptoms do
+      symptoms.map { |symptom| symptom.description }
+    end
+  end
 end

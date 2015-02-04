@@ -1,7 +1,12 @@
 class CasesController < ApplicationController
 
   def index
-    @cases = Case.all
+    if params[:q]
+      @cases = (Case.search { fulltext params[:q] }).results
+    else
+      @cases = Case.all
+    end
+    
   end
 
   def show
