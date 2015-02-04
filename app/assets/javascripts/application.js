@@ -14,3 +14,19 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// function to fire error after leaving a required field empty
+required_field_check = function() {
+    if ($(this).val() == '') {
+        var parent_div = $(this).closest('.form-group');
+        parent_div.addClass('error');
+        parent_div.find('.error-message').removeClass('hidden');
+    }
+}
+
+// register some stuff once the document is ready to go
+$(document).ready( function() {
+    $('.form-group.required input').bind('focusout',required_field_check);
+    $('.form-group.required select').bind('focusout',required_field_check);
+    $('.form-group.required radio').bind('focusout',required_field_check);
+})

@@ -2,6 +2,12 @@
 
   Collection of medical cases, catalogued by symptoms.
 
+** Version 6.0
+
+   *Form Validation:* if a required field is left blank in the user or
+   case forms, it is highlighted red and an informative alert is
+   displayed to the user.
+
 ** Version 5.0
 
    [[https://github.com/tnez/hospital/tree/v5.0][v5.0]]

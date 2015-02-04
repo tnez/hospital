@@ -1,36 +1,32 @@
 = form_for @form do |f|
-  / possible error messages
-  - if @form.errors.any?
-    %ul.error-list
-      - @form.errors.full_messages.each do |error_message|
-        %li.error-item
-          = error_message
   = f.fields_for :name do |n|
     .form-group
       = n.label :title
       = n.select :title, options_for_select(Name::TITLES, n.object.title), include_blank: true
-    .form-group
+    .form-group.required
       = n.label :first_name
       = n.text_field :first_name
+      %span.error-message.hidden First Name is Required
     .form-group
       = n.label :middle_name
       = n.text_field :middle_name
-    .form-group
+    .form-group.required
       = n.label :last_name
       = n.text_field :last_name
+      %span.error-message.hidden Last Name is Required
     .form-group
       = n.label :suffix
       = n.text_field :suffix
-  .form-group
+  .form-group.required
     = f.label :date_of_birth
     = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
-  .form-group
+  .form-group.required
     = f.label :gender
     = f.radio_button :gender, 'M', checked: @form.gender == 'M'
     = f.label :gender, 'Male', value: 'M'
     = f.radio_button :gender, 'F', checked: @form.gender == 'F'
     = f.label :gender, 'Female', value: 'F'
-  .form-group
+  .form-group.required
     = f.label :blood_type
     = f.select :blood_type, options_for_select(Patient::BLOOD_TYPES, f.object.blood_type), include_blank: true
   = f.submit
