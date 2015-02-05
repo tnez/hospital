@@ -9,6 +9,9 @@
    displayed to the user. The submit button is initially hidden, but
    fades-in when the form becomes valid.
 
+   *Fade Flash Notifications:* flash notifications fade out of view
+   slightly after they are displayed.
+
 ** Version 5.0
 
    [[https://github.com/tnez/hospital/tree/v5.0][v5.0]]

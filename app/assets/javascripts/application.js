@@ -63,4 +63,6 @@ $(document).ready( function() {
             $form.find('[type="submit"]').fadeOut()
         }
     })
+    // fade out flash messages if they exist
+    $('#alert,#notice').fadeOut(2400);
 });
