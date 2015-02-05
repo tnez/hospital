@@ -4,6 +4,8 @@
 
 ** Version 6.0
 
+   [[https://github.com/tnez/hospital/tree/v6.0][v6.0]]
+
    *Form Validation:* if a required field is left blank in the user or
    case forms, it is highlighted red and an informative alert is
    displayed to the user. The submit button is initially hidden, but
