@@ -47,6 +47,33 @@ form_is_valid = function ($form) {
     return is_valid;
 }
 
+// paginate ul: must be a ul > li relationship
+paginate_ul = function($ul, page, records_per_page) {
+    if(typeof(page)=='undefined') page=0;
+    if(typeof(records_per_page)=='undefined') records_per_page=20;
+    // get total number of records
+    num_records = $ul.children('li').length
+    // begin by hiding all li elements
+    $ul.children('li').hide();
+    // show elements for this page
+    $ul.children('li').slice(page*records_per_page, page*records_per_page+records_per_page).show();
+    // remove block of pagination links
+    $('.pagelinks').remove();
+    // create a new block of pagination links
+    links_as_string = '';
+    for(var i = 0; i < Math.ceil(num_records/records_per_page); i++) {
+        links_as_string += ('<a href="#" page="'+i+'">'+i+'</a> | ');
+    }
+    $ul.after('<div class="pagelinks">'+links_as_string+'</div>');
+    // generate links 
+    // make all of the pagelinks inactive
+    $('.pagelinks a').removeClass('active');
+    // make our current pagelink active
+    $('.pagelinks a[page="'+page+'"]').addClass('active');
+    // give all these links events
+    $('.pagelinks a').click( function() { paginate_ul($ul, $(this).attr('page'), records_per_page) });
+};
+
 // register some stuff once the document is ready to go
 $(document).ready( function() {
     // hide any submit buttons
@@ -65,4 +92,6 @@ $(document).ready( function() {
     })
     // fade out flash messages if they exist
     $('#alert,#notice').fadeOut(2400);
+    // paginate any ul's with a pagination class
+    paginate_ul($('ul.paginate'));
 });

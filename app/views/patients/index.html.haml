@@ -6,7 +6,7 @@
         -# %i.glyphicon.glyphicon-search
 
 %h2 Patient List
-%ul.patient-list
+%ul.patient-list.paginate
   - @patients.each do |patient|
     %li.patient-item
       = patient.name

@@ -6,7 +6,7 @@
         -# %i.glyphicon.glyphicon-search
 
 %h2 Case List
-%ul
+%ul.paginate
   - @cases.each do |_case|
     %li
       = _case.description

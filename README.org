@@ -12,6 +12,9 @@
    *Fade Flash Notifications:* flash notifications fade out of view
    slightly after they are displayed.
 
+   *Pagination:* patient and case index pages are paginated using
+   a custom pagination function built in jQuery.
+
 ** Version 5.0
 
    [[https://github.com/tnez/hospital/tree/v5.0][v5.0]]

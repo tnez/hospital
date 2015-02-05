@@ -21,3 +21,10 @@
 .error-message {
     color: indianred;
 }
+
+.pagelinks a.active {
+    background: 1px #999;
+}
+
+
+
