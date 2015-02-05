@@ -22,7 +22,7 @@
     = f.date_select :date_of_birth, start_year: Date.today.year-100, end_year: Date.today.year-10
   .form-group.required
     = f.label :gender
-    = f.radio_button :gender, 'M', checked: @form.gender == 'M'
+    = f.radio_button :gender, 'M', checked: @form.gender != 'F'
     = f.label :gender, 'Male', value: 'M'
     = f.radio_button :gender, 'F', checked: @form.gender == 'F'
     = f.label :gender, 'Female', value: 'F'

@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//
 //= require_tree .
+//
+//= require turbolinks
 
 // function to fire error after leaving a required field empty
 required_field_check = function() {
@@ -28,19 +31,17 @@ required_field_check = function() {
 }
 
 // a form is valid if all required inputs have a value
-form_is_valid = function () {
+form_is_valid = function ($form) {
+    // DEBUG:
+    console.log('---validation run')
     // default return value is true
     var is_valid = true;
     // get the input for all required fields
-    var $required_fields = $('form .required :input');
+    var $required_fields = $form.find('.required :input');
     // for each required field
     $required_fields.each( function() {
-        $parent_div = $( this ).closest('.form-group');
         if ($( this ).val() == '') {
             is_valid = false;
-            $parent_div.attr('valid', false);
-        } else {
-            $parent_div.attr('valid', true);
         }
     })
     return is_valid;
@@ -54,9 +55,12 @@ $(document).ready( function() {
     $('.form-group.required select').bind('focusout',required_field_check);
     $('.form-group.required radio').bind('focusout',required_field_check);
     // fade in submit button if the form is valid
-    $('form').change( function() {
-        if (form_is_valid()) {
-            $(this).find('[type="submit"]').fadeIn()
+    $('form .required :input').change( function() {
+        $form = $(this).closest('form');
+        if (form_is_valid($form)) {
+            $form.find('[type="submit"]').fadeIn()
+        } else {
+            $form.find('[type="submit"]').fadeOut()
         }
     })
-})
+});
