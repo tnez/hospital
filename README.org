@@ -2,6 +2,11 @@
 
   Collection of medical cases, catalogued by symptoms.
 
+** Version 7.0: Playing with *AJAX*
+
+   - [ ] display patient search results using an *AJAX* request
+   - [ ] handle case workflow updates with *AJAX*
+
 ** Version 6.0
 
    [[https://github.com/tnez/hospital/tree/v6.0][v6.0]]
