@@ -1,11 +1,12 @@
 %h2
   = "Case#: #{@case.id}"
 
-%h3 Status
-= @case.current_state
-- @case.current_state.events.keys.each do |action|
-  |
-  = link_to "#{action}", "/cases/#{@case.id}/#{action}_case", method: :patch
+.status-panel{data: {"case-id":@case.id}}
+  = render "status_panel"
+  -# = @case.current_state
+  -# - @case.current_state.events.keys.each do |action|
+  -#   |
+  -#   = link_to "#{action}", "/cases/#{@case.id}/#{action}_case", method: :patch
 
 %h3 Description
 %p

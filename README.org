@@ -5,7 +5,7 @@
 ** Version 7.0: Playing with *AJAX*
 
    - [ ] display patient search results using an *AJAX* request
-   - [ ] handle case workflow updates with *AJAX*
+   - [X] handle case workflow updates with *AJAX*
 
 ** Version 6.0
 

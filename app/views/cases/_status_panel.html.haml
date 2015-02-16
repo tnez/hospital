@@ -1,0 +1,8 @@
+-# display a status panel
+%strong
+  Status:
+= @case.workflow_state
+\:
+- @case.current_state.events.keys.each do |key|
+  = link_to key, "javascript:void(0);", data: {action:key}, class: "state-link"
+  \:
