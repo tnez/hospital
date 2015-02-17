@@ -1,0 +1,3 @@
+-# replace the patient list with the patient list given our new search
+-# terms
+$('.patient-list').html("#{j(render 'patient_list', collection: @patients, locals: {page:1})}");

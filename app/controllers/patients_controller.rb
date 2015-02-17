@@ -1,10 +1,16 @@
 class PatientsController < ApplicationController
 
   def index
-    if params[:q]
-      @patients = (Patient.search { fulltext params[:q] }).results
-    else
-      @patients = Patient.all
+    @patients = Patient.all
+  end
+
+  def search
+    @search = Patient.search { fulltext "*#{params[:q]}*" }
+    @patients = @search.results
+    @page = 1
+    @term = params[:q]
+    respond_to do |format|
+      format.js
     end
   end
 

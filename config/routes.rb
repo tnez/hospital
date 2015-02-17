@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     member do
       post :create_note
     end
+    collection do
+      post :search
+    end
   end
 
   # Example resource route with sub-resources:
